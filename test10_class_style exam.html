@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>syl-vue-test</title>
+    <!-- 引入 vue.js -->
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p :style="{fontSize:fontSize+'px',color:color}">对象语法3</p>
+        <input type="button" value="变大变色" @click="handerClick" />
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                fontSize: 10,
+                color: 'red'
+            },
+            methods: {
+                handerClick: function () {
+                    this.fontSize = this.fontSize + 10;
+                    this.color = this.color == 'red' ? 'black' : 'red';
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>

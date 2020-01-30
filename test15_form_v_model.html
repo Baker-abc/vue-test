@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>syl-vue-test</title>
+    <!-- 引入 vue.js -->
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p style="white-space: pre-line;">{{msg}}</p>
+        <textarea v-model="msg">
+       </textarea>
+        <!-- v-model 定义为一样可实现radio单选 pick=value-->
+        <div style="background-color: rosybrown;">
+            <input type="radio" id="one" value="one" v-model="pick" />
+            <label for="one">one</label>
+            <input type="radio" id="two" value="two" v-model="pick" />
+            <label for="two">two</label>
+            <p>pick：{{pick}}</p>
+        </div>
+        <!-- checkbox v-model=value -->
+        <div style="background-color:saddlebrown;">
+            <input type="checkbox" id="checkbox" value="one" v-model="pick2" />
+            <label for="checkbox">checkbox：{{pick2}}</label>
+        </div>
+        <!-- 多个checkbox v-model=[value...] -->
+        <div style="background-color:steelblue">
+            <input type="checkbox" id="checkbox1" value="one" v-model="pick3" />
+            <label for="checkbox1">checkbox1</label>
+            <input type="checkbox" id="checkbox2" value="two" v-model="pick3" />
+            <label for="checkbox2">checkbox2</label>
+            <input type="checkbox" id="checkbox3" value="three" v-model="pick3" />
+            <label for="checkbox3">checkbox3</label>
+            <p>选择：{{pick3}}</p>
+        </div>
+        <div style="background-color: violet;">
+            <select v-model="selected">
+                <option disabled value="">请选择</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+            <span>选择了：{{selected}}</span>
+        </div>
+        <div style="background-color: yellow;">
+            <input type="checkbox" v-model="toggle" true-value="yes" false-value="no">
+            <p>toggle:{{toggle}}</p>
+        </div>
+        <div style="background-color:tomato;">
+            <input type="text" v-model.lazy="lazy" />
+            <p>离开输入框显示：{{lazy}}</p>
+        </div>
+        <div style="background-color: yellow;">
+            <p>没有使用 .number 修饰符</p>
+            <input v-model="number1" type="number">
+            <!-- 使用typeof对值类型检测 -->
+            <p>{{typeof(number1)}}</p>
+            <p>使用 .number 修饰符</p>
+            <input v-model.number="number2" type="number">
+            <!-- 使用typeof对值类型检测 -->
+            <p>{{typeof(number2)}}</p>
+        </div>
+        <div style="background-color: teal;">
+            <input v-model.trim="msg2" type="text" />
+            <p>首尾空格被过滤了：{{msg2}}</p>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                msg: '',
+                pick: '',
+                pick2: '',
+                pick3: [],
+                selected: '',
+                toggle: '',
+                lazy: '',
+                number1: '',
+                number2: '',
+                msg2: ''
+            }
+        });
+    </script>
+</body>
+
+</html>

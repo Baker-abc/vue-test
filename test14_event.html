@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>syl-vue-test</title>
+    <!-- 引入 vue.js -->
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div style="height: 100px; width: 700px; background-color: black;" @click.left="handerClick">
+            <div
+                :style="{backgroundColor:backgroundColor,height:height,width:width,borderRadius:borderRadius,marginLeft:marginLeft+'px'}">
+            </div>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                backgroundColor: 'red',
+                height: '100px',
+                width: '100px',
+                borderRadius: '50%',
+                marginLeft: 0
+            },
+            methods: {
+                handerClick: function () {
+                    this.marginLeft = this.marginLeft + 10;
+                }
+            },
+            watch: {
+                marginLeft: (newVal, oldVal) => {
+                    if(newVal >= 700){
+                        alert("走了700px了");
+                    }
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>

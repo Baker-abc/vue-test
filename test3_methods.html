@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>syl-vue</title>
+
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <!-- 指令 参数-->
+    <div id="app">
+        <div>
+            <p>我叫：{{name}}</p>
+            <!-- handleClick 使我们在实例 methods 中写的方法 -->
+            <button v-on:click="handleClick">点我</button>
+        </div>
+        <div>
+            <p>我叫：{{name2}}</p>
+            <button v-on:[event]="handleClick2">点我</button>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                name: '一枝花',
+                name2: '一枝花',
+                event: 'click'
+            },
+            methods: {//实例方法对象
+                handleClick: function () {
+                    this.name = this.name.split('').reverse().join('')
+                },
+                handleClick2: function () {
+                    this.name2 = this.name2.split('').reverse().join('')
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

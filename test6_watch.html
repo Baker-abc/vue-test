@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>syl-vue-test</title>
+    <!-- 引入 vue.js -->
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" :value="value" />
+        <button type="button" @click="handClick">修改值</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                value: "baker"
+            },
+            methods: {
+                handClick: function () {
+                    this.value = this.value + "A"
+                }
+            },
+            watch: {
+                value: (newVal, oldVal) => {
+                    alert('新值 ' + newVal + '  旧值 ' + oldVal);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

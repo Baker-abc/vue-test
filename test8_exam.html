@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>syl-vue-test</title>
+    <!-- 引入 vue.js -->
+    <script src="./vue.js"></script>
+    <style type="text/css">
+        .price {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p class="price">单价：{{price|appendMoney}}</p>
+        <p>数量：<input type="number" v-model="count" /></p>
+        <p class="price">总价：{{total|appendMoney}}</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                price: 199,
+                count: 0
+            },
+            computed: {
+                total: function () {
+                    return this.price * this.count
+                }
+            },
+            filters: {
+                appendMoney: (val) => {
+                    if (val) {
+                        return "￥" + val;
+                    }
+                    return val;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

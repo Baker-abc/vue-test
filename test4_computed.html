@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>syl-vue</title>
+
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <!-- 指令 参数-->
+    <div id="app">
+        <div>
+            <p>我叫：{{name}}</p>
+            <p>他叫：{{pickName}}</p>
+        </div>
+        <div>
+            <p>时间：{{time}}</p>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                name: 'baker'
+            },
+            methods: {//实例方法对象
+            },
+            computed: {
+                pickName: function () {
+                    return '昵称' + this.name
+                },
+                time: () => { return Date.now() }
+            }
+        })
+    </script>
+</body>
+
+</html>

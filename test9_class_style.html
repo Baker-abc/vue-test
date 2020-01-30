@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>syl-vue-test</title>
+    <!-- 引入 vue.js -->
+    <script src="./vue.js"></script>
+    <style type="text/css">
+        .price {
+            color: red;
+        }
+
+        .price2 {
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p :class="{'price':isPrice}">单价</p>
+        <p :class="[style1,style2]">数组语法</p>
+        <p :style="{fontSize:size,color:color}">对象语法</p>
+        <p :style="style">对象语法2</p>
+        <p :style="[style,style4]">对象语法3</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                isPrice: true,
+                style1: 'price',
+                style2: 'price2',
+                size: '40px',
+                color: 'red',
+                style: {
+                    fontSize: '50px',
+                    color: 'red'
+                },
+                style4: {
+                    backgroundColor: "blue"
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
