@@ -1,3 +1,5 @@
+# vue练习
+
 ## 指令：指令 (Directives) 是带有 v- 前缀的特殊特性。
 * v-model：双向绑定值  【v-model="msg"】
 * v-once：只渲染一次，包含字标签  【<p v-once>msg：{{msg}}</p>】
