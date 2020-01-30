@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>syl-vue-test</title>
+    <!-- 引入 vue.js -->
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <!--
+        第一步：子组件绑定事件。
+        第二步：子组件绑定事件触发，使用 $emit 创建自定义事件并传入需要传值给父组件的数据。
+        第三部：在子组件标签上 用 v-on 绑定自定义事件，在父组件中声明自定义事件处理的方法。
+        第四部：父组件方法，接受自定义事件传的参数，就完成了整个由下到上的数据流。
+    -->
+    <div id="app">
+        <component1 v-on:send-message="getMessage"></component1>
+
+        <!-- 使用v-bind简写模式 动态绑定 props 值 -->
+        <child-component :name="name" :age="age" :height="height"></child-component>
+        <child-component :name="name+'2'" :age="age+1" :height="height"></child-component>
+    </div>
+    <script>
+        // 全局组件
+        Vue.component(
+            'component1',
+            {
+                template:
+                    `
+                <button v-on:click="$emit('send-message','子组件向父组件通信')">click</button>
+                `
+            }
+        );
+        Vue.component('child-component', {
+            //使用属性类型检测
+            props: {
+                name: String,
+                age: Number,
+                height: String
+            },
+            template: `
+            <ul>
+                <li>{{name}}</li>
+                <li>{{age}}</li>
+                <li>{{height}}</li>
+            </ul>
+            `
+        })
+        var app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name: 'syl',
+                    age: 20,
+                    height: '180cm'
+                }
+            },
+            methods: {
+                getMessage: function (message) {
+                    alert(message);
+                }
+            }
+        });
+    </script>
+</body>
+
+
+</html>

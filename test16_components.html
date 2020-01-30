@@ -15,15 +15,46 @@
         <component1></component1>
         <component1></component1>
     </div>
+    <div id="app2">
+        <component2></component2>
+    </div>
+    <div id="app3">
+        <component3></component3>
+        <component3></component3>
+    </div>
     <script>
+        // 全局组件
         Vue.component(
             'component1',
-            { template: "<h2>第一个component</h2>" }
+            { template: "<h2>第一个全局component</h2>" }
         );
+
         var app = new Vue({
             el: '#app',
             data: {
             }
+        });
+
+        const component2 = { template: "<h2>第一个局部component，只有父级才能调用</h2>" };
+        var app2 = new Vue({
+            el: '#app2',
+            components: {
+                'component2': component2
+            }
+        });
+
+        Vue.component(
+            'component3',
+            {
+                //data必须是一个函数不然会影响其他组件
+                data() {
+                    return { count: 0 };
+                },
+                template: '<button @click="count+=1">{{count}}</button>'
+            }
+        );
+        var app3 = new Vue({
+            el: '#app3'
         });
     </script>
 </body>

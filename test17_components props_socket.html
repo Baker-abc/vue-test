@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>syl-vue-test</title>
+    <!-- 引入 vue.js -->
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <component1 send-message="one"></component1>
+        <component1 send-message="two"></component1>
+        <component2 name="baker" age=28></component2>
+    </div>
+    <script>
+        // 全局组件
+        Vue.component(
+            'component1',
+            {
+                // 组件上 传递的 props 属性名为 send-message（短横线分隔命名)的要转换为驼峰命名
+                props: ['sendMessage'],
+                template: "<h2>父传子props：{{sendMessage}}</h2>"
+            }
+        );
+        Vue.component(
+            'component2',
+            {
+                //props 对象形式，传递属性值 进行类型检测
+                props: {
+                    name: String,
+                    age: Number
+                },
+                template: "<h2>姓名：{{name}}；年龄：{{age}}</h2>"
+            }
+        );
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+            }
+        });
+    </script>
+</body>
+
+</html>
